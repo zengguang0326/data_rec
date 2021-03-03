@@ -1,0 +1,5 @@
+server_endpoint@opc.tcp://192.168.61.185:9000/
+server_name@OPCUA.taiji
+kServer@["192.168.61.186:9092"]
+kTopic@testxian3
+event@opcua_event

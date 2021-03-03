@@ -1,0 +1,128 @@
+#!usr/bin/env python
+#-*- coding:utf-8 _*-
+"""
+@author:zengguang
+@file: opcua_client.py
+@time: 2020/9/2 17:29
+"""
+from opcua import Client, ua
+
+
+def brower_child(root):
+    """
+    递归调用遍历，格式化不好做，有深度问题
+    """
+    name = root.get_node_class().name
+    # print(name)
+    if name == "Object":
+        brower_obj(root)
+        for c in root.get_children():
+            print("  ", end='')
+            brower_child(c)
+    elif name == 'Variable':
+        brower_var(root)
+    else:
+        brower_method(root)
+
+
+class CurState():
+    def __init__(self, parent=None, p=None, d=0):
+        self.parent = parent  # unused
+        self.p = p
+        self.d = d
+
+
+def brower_child2(root, max_d=-1, ignore=[]):
+    arrayData=[]
+    """
+    栈+循环遍历，非常好用
+    """
+    stack = [CurState(None, root, 0)]
+    while len(stack):
+        cur = stack.pop()
+        name = cur.p.get_node_class().name
+
+        print(''.join(['  ' for i in range(cur.d)]), end="")
+
+        if cur.p.get_browse_name().Name in ignore:
+            continue
+
+        if name == "Object":
+            brower_obj(cur.p)
+            if max_d > 0 and cur.d >= max_d:
+                continue
+            for c in cur.p.get_children():
+                stack.append(CurState(cur.p, c, cur.d+1))
+
+        elif name == 'Variable':
+            rs=brower_var(cur.p)
+            arrayData.append(rs)
+        else:
+            brower_method(cur.p)
+    return arrayData
+
+
+def brower_obj(v):
+    # print(v.get_browse_name())
+    rw = 'R '
+    bname = v.get_browse_name()
+    print("*%2d:%-30s (%-2s, %-23s)" %
+          (bname.NamespaceIndex, bname.Name, rw, "Object"))
+
+
+def brower_var(v):
+    # print(v.get_browse_name())
+    rw = 'R '
+    if ua.AccessLevel.CurrentWrite in v.get_access_level():
+        rw = "RW"
+    bname = v.get_browse_name()
+    tv = v.get_data_value().Value
+    v_show = tv.Value
+    if len(str(v_show)) > 1024:
+        v_show = str(v_show[:56]) + "..."
+    print("-%2d:%-30s (%-2s, %-23s) =>" %
+          (bname.NamespaceIndex, bname.Name, rw, tv.VariantType), v_show)
+    rs={}
+    rs[bname.Name]=v_show
+    return rs
+
+
+def brower_method(v):
+    # print(v.get_description())
+    rw = 'C '
+    bname = v.get_browse_name()
+    # args = []
+    # for a in v.get_properties():
+    #     dt = a.get_data_type().NodeIdType.name
+    #     args.append(dt)
+    print("@%2d:%-30s (%-2s, %-23s)" %
+          (bname.NamespaceIndex, bname.Name, rw, "Method"))
+
+
+def main_c(url_p):
+    url = url_p
+    # url = "opc.tcp://127.0.0.1:12346/test"
+    c = Client(url)
+    rs=[]
+    try:
+        try:
+            c.connect()
+        except Exception as e:
+            print('e====',e)
+            return "连接错误",rs
+        root = c.get_root_node()
+        print("\r\nBrower:")
+        rs=brower_child2(root.get_child(["0:Objects"]), -1, ["Server"])
+        # print('rs====',rs)
+    except Exception as e:
+        print("Client Exception:", e)
+        # c.disconnect()
+        return "opcua client 错误", rs
+    finally:
+        c.disconnect()
+    return "查询成功", rs
+
+
+if __name__ == "__main__":
+    rs=main_c(url_p='opc.tcp://192.168.61.185:9000')
+    print('main==',rs)

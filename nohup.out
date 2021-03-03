@@ -1,0 +1,389 @@
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 124-779-187
+(12983) wsgi starting up on http://192.168.61.185:7777
+(12983) accepted ('10.0.28.34', 51072)
+(12983) accepted ('10.0.28.34', 51071)
+10.0.28.34 - - [23/Feb/2021 15:09:44] "GET /opcua?url=192.168.61.185:3000 HTTP/1.1" 200 209 0.008987
+10.0.28.34 - - [23/Feb/2021 15:09:44] "GET /favicon.ico HTTP/1.1" 404 366 0.000819
+10.0.28.34 - - [23/Feb/2021 15:09:51] "GET /opcua?url=192.168.61.185:9000 HTTP/1.1" 200 209 0.011019
+10.0.28.34 - - [23/Feb/2021 15:09:54] "GET /opcua?url=192.168.61.185:9000 HTTP/1.1" 200 209 0.002481
+(12983) accepted ('10.0.28.83', 59280)
+10.0.28.83 - - [23/Feb/2021 15:10:06] "GET /opcua?url=192.168.61.185:3000 HTTP/1.1" 200 209 0.005236
+(12983) accepted ('10.0.28.34', 51201)
+(12983) accepted ('10.0.28.34', 51202)
+(12983) accepted ('10.0.28.34', 51204)
+Exception in thread Thread-4:
+Traceback (most recent call last):
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 359, in _recv_loop
+    self._read_trampoline()
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 331, in _read_trampoline
+    timeout_exc=socket_timeout('timed out'))
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 210, in _trampoline
+    mark_as_closed=self._mark_as_closed)
+  File "/root/anaconda3/lib/python3.7/eventlet/hubs/__init__.py", line 159, in trampoline
+    return hub.switch()
+  File "/root/anaconda3/lib/python3.7/eventlet/hubs/hub.py", line 313, in switch
+    return self.greenlet.switch()
+eventlet.hubs.IOClosed: [Errno 107] Operation on closed file
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/anaconda3/lib/python3.7/threading.py", line 917, in _bootstrap_inner
+    self.run()
+  File "/root/anaconda3/lib/python3.7/threading.py", line 865, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/client/ua_client.py", line 101, in _run
+    self._receive()
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/client/ua_client.py", line 112, in _receive
+    msg = self._connection.receive_from_socket(self._socket)
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/common/connection.py", line 358, in receive_from_socket
+    header = header_from_binary(socket)
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/ua/ua_binary.py", line 521, in header_from_binary
+    hdr.MessageType, hdr.ChunkType, hdr.packet_size = struct.unpack("<3scI", data.read(8))
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/common/utils.py", line 108, in read
+    chunk = self.socket.recv(size)
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 365, in recv
+    return self._recv_loop(self.fd.recv, b'', bufsize, flags)
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 362, in _recv_loop
+    raise EOFError()
+EOFError
+
+10.0.28.34 - - [23/Feb/2021 15:17:31] "GET /opcua?url=192.168.61.185:9000 HTTP/1.1" 200 699 9.886389
+(12983) accepted ('10.0.28.34', 51226)
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 359, in _recv_loop
+    self._read_trampoline()
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 331, in _read_trampoline
+    timeout_exc=socket_timeout('timed out'))
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 210, in _trampoline
+    mark_as_closed=self._mark_as_closed)
+  File "/root/anaconda3/lib/python3.7/eventlet/hubs/__init__.py", line 159, in trampoline
+    return hub.switch()
+  File "/root/anaconda3/lib/python3.7/eventlet/hubs/hub.py", line 313, in switch
+    return self.greenlet.switch()
+eventlet.hubs.IOClosed: [Errno 107] Operation on closed file
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/anaconda3/lib/python3.7/threading.py", line 917, in _bootstrap_inner
+    self.run()
+  File "/root/anaconda3/lib/python3.7/threading.py", line 865, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/client/ua_client.py", line 101, in _run
+    self._receive()
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/client/ua_client.py", line 112, in _receive
+    msg = self._connection.receive_from_socket(self._socket)
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/common/connection.py", line 358, in receive_from_socket
+    header = header_from_binary(socket)
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/ua/ua_binary.py", line 521, in header_from_binary
+    hdr.MessageType, hdr.ChunkType, hdr.packet_size = struct.unpack("<3scI", data.read(8))
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/common/utils.py", line 108, in read
+    chunk = self.socket.recv(size)
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 365, in recv
+    return self._recv_loop(self.fd.recv, b'', bufsize, flags)
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 362, in _recv_loop
+    raise EOFError()
+EOFError
+
+10.0.28.34 - - [23/Feb/2021 15:17:40] "GET /opcua?url=192.168.61.185:9000 HTTP/1.1" 200 699 8.655975
+Exception in thread Thread-8:
+Traceback (most recent call last):
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 359, in _recv_loop
+    self._read_trampoline()
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 331, in _read_trampoline
+    timeout_exc=socket_timeout('timed out'))
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 210, in _trampoline
+    mark_as_closed=self._mark_as_closed)
+  File "/root/anaconda3/lib/python3.7/eventlet/hubs/__init__.py", line 159, in trampoline
+    return hub.switch()
+  File "/root/anaconda3/lib/python3.7/eventlet/hubs/hub.py", line 313, in switch
+    return self.greenlet.switch()
+eventlet.hubs.IOClosed: [Errno 107] Operation on closed file
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/anaconda3/lib/python3.7/threading.py", line 917, in _bootstrap_inner
+    self.run()
+  File "/root/anaconda3/lib/python3.7/threading.py", line 865, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/client/ua_client.py", line 101, in _run
+    self._receive()
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/client/ua_client.py", line 112, in _receive
+    msg = self._connection.receive_from_socket(self._socket)
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/common/connection.py", line 358, in receive_from_socket
+    header = header_from_binary(socket)
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/ua/ua_binary.py", line 521, in header_from_binary
+    hdr.MessageType, hdr.ChunkType, hdr.packet_size = struct.unpack("<3scI", data.read(8))
+  File "/root/anaconda3/lib/python3.7/site-packages/opcua/common/utils.py", line 108, in read
+    chunk = self.socket.recv(size)
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 365, in recv
+    return self._recv_loop(self.fd.recv, b'', bufsize, flags)
+  File "/root/anaconda3/lib/python3.7/eventlet/greenio/base.py", line 362, in _recv_loop
+    raise EOFError()
+EOFError
+
+10.0.28.34 - - [23/Feb/2021 15:18:03] "GET /opcua?url=192.168.61.185:9000 HTTP/1.1" 200 699 22.777515
+10.0.28.83 - - [23/Feb/2021 15:18:03] "GET /opcua?url=192.168.61.185:3000 HTTP/1.1" 200 209 0.006537
+ * Detected change in '/data_rec/opcua_client.py', reloading
+e==== 
+e==== [Errno 111] ECONNREFUSED
+e==== [Errno 111] ECONNREFUSED
+e==== 
+
+Brower:
+* 0:Objects                        (R , Object                 )
+  * 2:MyObject                       (R , Object                 )
+    - 2:node10                         (RW, VariantType.Double     ) => 0.47315861671266524
+    - 2:node9                          (RW, VariantType.Double     ) => 0.45532234040419106
+    - 2:node8                          (RW, VariantType.Double     ) => 0.5338383951178964
+    - 2:node7                          (RW, VariantType.Double     ) => 0.19172600162217157
+    - 2:node6                          (RW, VariantType.Double     ) => 0.21731983791931986
+    - 2:node5                          (RW, VariantType.Double     ) => 0.7056804175797368
+    - 2:node4                          (RW, VariantType.Double     ) => 0.22853738084721442
+    - 2:node3                          (RW, VariantType.Double     ) => 0.9070882055973285
+    - 2:node2                          (RW, VariantType.Double     ) => 0.8440701753231045
+    - 2:node12                         (RW, VariantType.Double     ) => 0.02312854927880592
+  rs==== [{'node10': 0.47315861671266524}, {'node9': 0.45532234040419106}, {'node8': 0.5338383951178964}, {'node7': 0.19172600162217157}, {'node6': 0.21731983791931986}, {'node5': 0.7056804175797368}, {'node4': 0.22853738084721442}, {'node3': 0.9070882055973285}, {'node2': 0.8440701753231045}, {'node12': 0.02312854927880592}]
+
+Brower:
+* 0:Objects                        (R , Object                 )
+  * 2:MyObject                       (R , Object                 )
+    - 2:node10                         (RW, VariantType.Double     ) => 0.47315861671266524
+    - 2:node9                          (RW, VariantType.Double     ) => 0.45532234040419106
+    - 2:node8                          (RW, VariantType.Double     ) => 0.5338383951178964
+    - 2:node7                          (RW, VariantType.Double     ) => 0.19172600162217157
+    - 2:node6                          (RW, VariantType.Double     ) => 0.21731983791931986
+    - 2:node5                          (RW, VariantType.Double     ) => 0.7056804175797368
+    - 2:node4                          (RW, VariantType.Double     ) => 0.22853738084721442
+    - 2:node3                          (RW, VariantType.Double     ) => 0.9070882055973285
+    - 2:node2                          (RW, VariantType.Double     ) => 0.8440701753231045
+    - 2:node12                         (RW, VariantType.Double     ) => 0.02312854927880592
+  rs==== [{'node10': 0.47315861671266524}, {'node9': 0.45532234040419106}, {'node8': 0.5338383951178964}, {'node7': 0.19172600162217157}, {'node6': 0.21731983791931986}, {'node5': 0.7056804175797368}, {'node4': 0.22853738084721442}, {'node3': 0.9070882055973285}, {'node2': 0.8440701753231045}, {'node12': 0.02312854927880592}]
+
+Brower:
+* 0:Objects                        (R , Object                 )
+  * 2:MyObject                       (R , Object                 )
+    - 2:node10                         (RW, VariantType.Double     ) => 0.47315861671266524
+    - 2:node9                          (RW, VariantType.Double     ) => 0.45532234040419106
+    - 2:node8                          (RW, VariantType.Double     ) => 0.5338383951178964
+    - 2:node7                          (RW, VariantType.Double     ) => 0.19172600162217157
+    - 2:node6                          (RW, VariantType.Double     ) => 0.21731983791931986
+    - 2:node5                          (RW, VariantType.Double     ) => 0.7056804175797368
+    - 2:node4                          (RW, VariantType.Double     ) => 0.22853738084721442
+    - 2:node3                          (RW, VariantType.Double     ) => 0.9070882055973285
+    - 2:node2                          (RW, VariantType.Double     ) => 0.8440701753231045
+    - 2:node12                         (RW, VariantType.Double     ) => 0.02312854927880592
+  rs==== [{'node10': 0.47315861671266524}, {'node9': 0.45532234040419106}, {'node8': 0.5338383951178964}, {'node7': 0.19172600162217157}, {'node6': 0.21731983791931986}, {'node5': 0.7056804175797368}, {'node4': 0.22853738084721442}, {'node3': 0.9070882055973285}, {'node2': 0.8440701753231045}, {'node12': 0.02312854927880592}]
+e==== 
+
+Brower:
+* 0:Objects                        (R , Object                 )
+  * 2:MyObject                       (R , Object                 )
+    - 2:node10                         (RW, VariantType.Double     ) => 0.47315861671266524
+    - 2:node9                          (RW, VariantType.Double     ) => 0.45532234040419106
+    - 2:node8                          (RW, VariantType.Double     ) => 0.5338383951178964
+    - 2:node7                          (RW, VariantType.Double     ) => 0.19172600162217157
+    - 2:node6                          (RW, VariantType.Double     ) => 0.21731983791931986
+    - 2:node5                          (RW, VariantType.Double     ) => 0.7056804175797368
+    - 2:node4                          (RW, VariantType.Double     ) => 0.22853738084721442
+    - 2:node3                          (RW, VariantType.Double     ) => 0.9070882055973285
+    - 2:node2                          (RW, VariantType.Double     ) => 0.8440701753231045
+    - 2:node12                         (RW, VariantType.Double     ) => 0.02312854927880592
+  rs==== [{'node10': 0.47315861671266524}, {'node9': 0.45532234040419106}, {'node8': 0.5338383951178964}, {'node7': 0.19172600162217157}, {'node6': 0.21731983791931986}, {'node5': 0.7056804175797368}, {'node4': 0.22853738084721442}, {'node3': 0.9070882055973285}, {'node2': 0.8440701753231045}, {'node12': 0.02312854927880592}]
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 304-019-665
+
+Brower:
+* 0:Objects                        (R , Object                 )
+  * 2:MyObject                       (R , Object                 )
+    - 2:node10                         (RW, VariantType.Double     ) => 0.47315861671266524
+    - 2:node9                          (RW, VariantType.Double     ) => 0.45532234040419106
+    - 2:node8                          (RW, VariantType.Double     ) => 0.5338383951178964
+    - 2:node7                          (RW, VariantType.Double     ) => 0.19172600162217157
+    - 2:node6                          (RW, VariantType.Double     ) => 0.21731983791931986
+    - 2:node5                          (RW, VariantType.Double     ) => 0.7056804175797368
+    - 2:node4                          (RW, VariantType.Double     ) => 0.22853738084721442
+    - 2:node3                          (RW, VariantType.Double     ) => 0.9070882055973285
+    - 2:node2                          (RW, VariantType.Double     ) => 0.8440701753231045
+    - 2:node12                         (RW, VariantType.Double     ) => 0.02312854927880592
+  rs==== [{'node10': 0.47315861671266524}, {'node9': 0.45532234040419106}, {'node8': 0.5338383951178964}, {'node7': 0.19172600162217157}, {'node6': 0.21731983791931986}, {'node5': 0.7056804175797368}, {'node4': 0.22853738084721442}, {'node3': 0.9070882055973285}, {'node2': 0.8440701753231045}, {'node12': 0.02312854927880592}]
+
+Brower:
+* 0:Objects                        (R , Object                 )
+  * 2:MyObject                       (R , Object                 )
+    - 2:node10                         (RW, VariantType.Double     ) => 0.47315861671266524
+    - 2:node9                          (RW, VariantType.Double     ) => 0.45532234040419106
+    - 2:node8                          (RW, VariantType.Double     ) => 0.5338383951178964
+    - 2:node7                          (RW, VariantType.Double     ) => 0.19172600162217157
+    - 2:node6                          (RW, VariantType.Double     ) => 0.21731983791931986
+    - 2:node5                          (RW, VariantType.Double     ) => 0.7056804175797368
+    - 2:node4                          (RW, VariantType.Double     ) => 0.22853738084721442
+    - 2:node3                          (RW, VariantType.Double     ) => 0.9070882055973285
+    - 2:node2                          (RW, VariantType.Double     ) => 0.8440701753231045
+    - 2:node12                         (RW, VariantType.Double     ) => 0.02312854927880592
+  rs==== [{'node10': 0.47315861671266524}, {'node9': 0.45532234040419106}, {'node8': 0.5338383951178964}, {'node7': 0.19172600162217157}, {'node6': 0.21731983791931986}, {'node5': 0.7056804175797368}, {'node4': 0.22853738084721442}, {'node3': 0.9070882055973285}, {'node2': 0.8440701753231045}, {'node12': 0.02312854927880592}]
+
+Brower:
+* 0:Objects                        (R , Object                 )
+  * 2:MyObject                       (R , Object                 )
+    - 2:node10                         (RW, VariantType.Double     ) => 0.47315861671266524
+    - 2:node9                          (RW, VariantType.Double     ) => 0.45532234040419106
+    - 2:node8                          (RW, VariantType.Double     ) => 0.5338383951178964
+    - 2:node7                          (RW, VariantType.Double     ) => 0.19172600162217157
+    - 2:node6                          (RW, VariantType.Double     ) => 0.21731983791931986
+    - 2:node5                          (RW, VariantType.Double     ) => 0.7056804175797368
+    - 2:node4                          (RW, VariantType.Double     ) => 0.22853738084721442
+    - 2:node3                          (RW, VariantType.Double     ) => 0.9070882055973285
+    - 2:node2                          (RW, VariantType.Double     ) => 0.8440701753231045
+    - 2:node12                         (RW, VariantType.Double     ) => 0.02312854927880592
+  rs==== [{'node10': 0.47315861671266524}, {'node9': 0.45532234040419106}, {'node8': 0.5338383951178964}, {'node7': 0.19172600162217157}, {'node6': 0.21731983791931986}, {'node5': 0.7056804175797368}, {'node4': 0.22853738084721442}, {'node3': 0.9070882055973285}, {'node2': 0.8440701753231045}, {'node12': 0.02312854927880592}]
+
+Brower:
+* 0:Objects                        (R , Object                 )
+  * 2:MyObject                       (R , Object                 )
+    - 2:node10                         (RW, VariantType.Double     ) => 0.47315861671266524
+    - 2:node9                          (RW, VariantType.Double     ) => 0.45532234040419106
+    - 2:node8                          (RW, VariantType.Double     ) => 0.5338383951178964
+    - 2:node7                          (RW, VariantType.Double     ) => 0.19172600162217157
+    - 2:node6                          (RW, VariantType.Double     ) => 0.21731983791931986
+    - 2:node5                          (RW, VariantType.Double     ) => 0.7056804175797368
+    - 2:node4                          (RW, VariantType.Double     ) => 0.22853738084721442
+    - 2:node3                          (RW, VariantType.Double     ) => 0.9070882055973285
+    - 2:node2                          (RW, VariantType.Double     ) => 0.8440701753231045
+    - 2:node12                         (RW, VariantType.Double     ) => 0.02312854927880592
+  rs==== [{'node10': 0.47315861671266524}, {'node9': 0.45532234040419106}, {'node8': 0.5338383951178964}, {'node7': 0.19172600162217157}, {'node6': 0.21731983791931986}, {'node5': 0.7056804175797368}, {'node4': 0.22853738084721442}, {'node3': 0.9070882055973285}, {'node2': 0.8440701753231045}, {'node12': 0.02312854927880592}]
+
+Brower:
+* 0:Objects                        (R , Object                 )
+  * 2:MyObject                       (R , Object                 )
+    - 2:node10                         (RW, VariantType.Double     ) => 0.47315861671266524
+    - 2:node9                          (RW, VariantType.Double     ) => 0.45532234040419106
+    - 2:node8                          (RW, VariantType.Double     ) => 0.5338383951178964
+    - 2:node7                          (RW, VariantType.Double     ) => 0.19172600162217157
+    - 2:node6                          (RW, VariantType.Double     ) => 0.21731983791931986
+    - 2:node5                          (RW, VariantType.Double     ) => 0.7056804175797368
+    - 2:node4                          (RW, VariantType.Double     ) => 0.22853738084721442
+    - 2:node3                          (RW, VariantType.Double     ) => 0.9070882055973285
+    - 2:node2                          (RW, VariantType.Double     ) => 0.8440701753231045
+    - 2:node12                         (RW, VariantType.Double     ) => 0.02312854927880592
+  rs==== [{'node10': 0.47315861671266524}, {'node9': 0.45532234040419106}, {'node8': 0.5338383951178964}, {'node7': 0.19172600162217157}, {'node6': 0.21731983791931986}, {'node5': 0.7056804175797368}, {'node4': 0.22853738084721442}, {'node3': 0.9070882055973285}, {'node2': 0.8440701753231045}, {'node12': 0.02312854927880592}]
+
+Brower:
+* 0:Objects                        (R , Object                 )
+  * 2:MyObject                       (R , Object                 )
+    - 2:node10                         (RW, VariantType.Double     ) => 0.47315861671266524
+    - 2:node9                          (RW, VariantType.Double     ) => 0.45532234040419106
+    - 2:node8                          (RW, VariantType.Double     ) => 0.5338383951178964
+    - 2:node7                          (RW, VariantType.Double     ) => 0.19172600162217157
+    - 2:node6                          (RW, VariantType.Double     ) => 0.21731983791931986
+    - 2:node5                          (RW, VariantType.Double     ) => 0.7056804175797368
+    - 2:node4                          (RW, VariantType.Double     ) => 0.22853738084721442
+    - 2:node3                          (RW, VariantType.Double     ) => 0.9070882055973285
+    - 2:node2                          (RW, VariantType.Double     ) => 0.8440701753231045
+    - 2:node12                         (RW, VariantType.Double     ) => 0.02312854927880592
+  rs==== [{'node10': 0.47315861671266524}, {'node9': 0.45532234040419106}, {'node8': 0.5338383951178964}, {'node7': 0.19172600162217157}, {'node6': 0.21731983791931986}, {'node5': 0.7056804175797368}, {'node4': 0.22853738084721442}, {'node3': 0.9070882055973285}, {'node2': 0.8440701753231045}, {'node12': 0.02312854927880592}](14861) wsgi starting up on http://192.168.61.185:7777
+(14861) accepted ('10.0.28.34', 51625)
+(14861) accepted ('10.0.28.34', 51626)
+10.0.28.34 - - [23/Feb/2021 15:20:05] "GET /opcua?url=192.168.61.185:9000 HTTP/1.1" 200 699 0.136829
+10.0.28.34 - - [23/Feb/2021 15:20:06] "GET /opcua?url=192.168.61.185:9000 HTTP/1.1" 200 699 0.125502
+10.0.28.34 - - [23/Feb/2021 15:20:06] "GET /opcua?url=192.168.61.185:9000 HTTP/1.1" 200 699 0.114749
+10.0.28.34 - - [23/Feb/2021 15:20:07] "GET /opcua?url=192.168.61.185:9000 HTTP/1.1" 200 699 0.098680
+10.0.28.34 - - [23/Feb/2021 15:20:07] "GET /opcua?url=192.168.61.185:9000 HTTP/1.1" 200 699 0.158354
+10.0.28.34 - - [23/Feb/2021 15:20:07] "GET /opcua?url=192.168.61.185:9000 HTTP/1.1" 200 699 0.126559
+10.0.28.34 - - [23/Feb/2021 15:20:08] "GET /opcua?url=192.168.61.185:9000 HTTP/1.1" 200 699 0.100059
+10.0.28.34 - - [23/Feb/2021 15:20:08] "GET /opcua?url=192.168.61.185:9000 HTTP/1.1" 200 699 0.126457
+(14861) accepted ('10.0.28.141', 63915)
+(14861) accepted ('10.0.28.141', 63916)
+Traceback (most recent call last):
+  File "/root/anaconda3/lib/python3.7/site-packages/flask/app.py", line 2295, in wsgi_app
+    response = self.handle_exception(e)
+  File "/root/anaconda3/lib/python3.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/root/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1741, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/anaconda3/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/root/anaconda3/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/anaconda3/lib/python3.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/root/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/anaconda3/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/root/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data_rec/flask-mqtt2.py", line 27, in index
+    return render_template('graph.html')
+  File "/root/anaconda3/lib/python3.7/site-packages/flask/templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/root/anaconda3/lib/python3.7/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/root/anaconda3/lib/python3.7/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/root/anaconda3/lib/python3.7/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/root/anaconda3/lib/python3.7/site-packages/jinja2/loaders.py", line 113, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/root/anaconda3/lib/python3.7/site-packages/flask/templating.py", line 58, in get_source
+    return self._get_source_fast(environment, template)
+  File "/root/anaconda3/lib/python3.7/site-packages/flask/templating.py", line 86, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: graph.html
+10.0.28.141 - - [23/Feb/2021 15:38:47] "GET / HTTP/1.1" 500 33800 0.016335
+10.0.28.141 - - [23/Feb/2021 15:38:47] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 6411 0.001723
+10.0.28.141 - - [23/Feb/2021 15:38:47] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 96098 0.001007
+(14861) accepted ('10.0.28.141', 63917)
+10.0.28.141 - - [23/Feb/2021 15:38:47] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 6404 0.000688
+10.0.28.141 - - [23/Feb/2021 15:38:47] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 633 0.000985
+10.0.28.141 - - [23/Feb/2021 15:38:47] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 70360 0.001087
+10.0.28.141 - - [23/Feb/2021 15:38:47] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 633 0.000460
+(14861) accepted ('10.0.28.34', 60153)
+(14861) accepted ('192.168.61.185', 37868)
+10.0.28.34,192.168.61.185 - - [24/Feb/2021 16:55:22] "GET /mqttoperate HTTP/1.0" 200 452 0.032336
+(14861) accepted ('10.0.28.34', 60757)
+(14861) accepted ('192.168.61.185', 37872)
+10.0.28.34 - - [24/Feb/2021 16:55:24] "GET /socket.io/?EIO=3&transport=polling&t=NVJFP0B HTTP/1.1" 200 401 0.011404
+10.0.28.34,192.168.61.185 - - [24/Feb/2021 16:55:24] "GET /aa?host=192.168.61.188&port=2233&topic=/python/mqtt188&topic2=912u4jc8 HTTP/1.0" 200 172 0.012363
+(14861) accepted ('10.0.28.34', 60758)
+10.0.28.34 - - [24/Feb/2021 16:55:24] "GET /socket.io/?EIO=3&transport=polling&t=NVJFP0V&sid=4161fb7c69de4ca7b7f6fc11c00440df HTTP/1.1" 200 235 0.002892
+10.0.28.34 - - [24/Feb/2021 16:55:28] "GET /socket.io/?EIO=3&transport=websocket&sid=4161fb7c69de4ca7b7f6fc11c00440df HTTP/1.1" 200 0 4.023945
+10.0.28.34 - - [24/Feb/2021 16:55:29] "GET /socket.io/?EIO=3&transport=polling&t=NVJFQDo HTTP/1.1" 200 401 0.000839
+(14861) accepted ('192.168.61.185', 37876)
+(14861) accepted ('10.0.28.34', 60779)
+10.0.28.34,192.168.61.185 - - [24/Feb/2021 16:55:29] "GET /aa?host=192.168.61.186&port=2233&topic=/python/mqtt188&topic2=623stcq2 HTTP/1.0" 200 165 0.007217
+10.0.28.34 - - [24/Feb/2021 16:55:29] "GET /socket.io/?EIO=3&transport=polling&t=NVJFQDw&sid=b48e3928d8174cf091e0a2bfb48b01b2 HTTP/1.1" 200 235 0.004711
+10.0.28.34 - - [24/Feb/2021 16:55:30] "GET /socket.io/?EIO=3&transport=websocket&sid=b48e3928d8174cf091e0a2bfb48b01b2 HTTP/1.1" 200 0 1.445975
+(14861) accepted ('192.168.61.185', 37912)
+10.0.28.34,192.168.61.185 - - [24/Feb/2021 16:56:33] "GET /mqttoperate HTTP/1.0" 200 452 0.013577
+(14861) accepted ('192.168.61.185', 38634)
+10.0.28.83,192.168.61.185 - - [25/Feb/2021 10:44:14] "GET /mqttoperate HTTP/1.0" 200 452 0.014148
+(14861) accepted ('192.168.61.185', 38640)
+10.0.28.83,192.168.61.185 - - [25/Feb/2021 10:44:25] "GET /mqttoperate HTTP/1.0" 200 452 0.013476
+(14861) accepted ('192.168.61.185', 38644)
+(14861) accepted ('10.0.28.83', 60708)
+10.0.28.83 - - [25/Feb/2021 10:44:30] "GET /socket.io/?EIO=3&transport=polling&t=NVN45Et HTTP/1.1" 200 401 0.001241
+10.0.28.83,192.168.61.185 - - [25/Feb/2021 10:44:30] "GET /aa?host=192.168.61.188&port=2233&topic=/python/mqtt188&topic2=pq8prpto HTTP/1.0" 200 172 0.008823
+(14861) accepted ('10.0.28.83', 60709)
+10.0.28.83 - - [25/Feb/2021 10:44:30] "GET /socket.io/?EIO=3&transport=polling&t=NVN45FC&sid=9e7e9697d6234db19f6de8e2a833964a HTTP/1.1" 200 235 0.011195
+10.0.28.83 - - [25/Feb/2021 10:44:47] "GET /socket.io/?EIO=3&transport=websocket&sid=9e7e9697d6234db19f6de8e2a833964a HTTP/1.1" 200 0 17.013342
+(14861) accepted ('192.168.61.185', 38648)
+10.0.28.83,192.168.61.185 - - [25/Feb/2021 10:44:47] "GET /mqttoperate HTTP/1.0" 200 452 0.013622
+(14861) accepted ('192.168.61.185', 38652)
+(14861) accepted ('10.0.28.83', 60754)
+10.0.28.83 - - [25/Feb/2021 10:44:48] "GET /socket.io/?EIO=3&transport=polling&t=NVN49pI HTTP/1.1" 200 401 0.000723
+10.0.28.83,192.168.61.185 - - [25/Feb/2021 10:44:48] "GET /aa?host=192.168.61.188&port=2233&topic=/python/mqtt188&topic2=euvemvi8 HTTP/1.0" 200 172 0.006419
+(14861) accepted ('10.0.28.83', 60755)
+10.0.28.83 - - [25/Feb/2021 10:44:49] "GET /socket.io/?EIO=3&transport=polling&t=NVN49pj&sid=1e869f91d4ec479c9826248d64108baa HTTP/1.1" 200 235 0.007087
+10.0.28.83 - - [25/Feb/2021 10:45:13] "GET /socket.io/?EIO=3&transport=websocket&sid=1e869f91d4ec479c9826248d64108baa HTTP/1.1" 200 0 24.028459
+(14861) accepted ('192.168.61.185', 38662)

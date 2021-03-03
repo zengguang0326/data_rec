@@ -1,0 +1,2 @@
+23-16-2021 15:16:56 kafka.coordinator.consumer:WARNING:group_id is None: disabling auto-commit.
+23-16-2021 15:16:56 opcua.server.binary_server_asyncio:WARNING:Listening on 192.168.61.185:9000
